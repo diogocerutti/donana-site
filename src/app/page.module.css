@@ -1,22 +1,6 @@
 .page {
   display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-}
-
-.header {
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  color: white;
-  background-color: #352b22;
-  align-items: center;
-}
-
-.logo {
-  width: 15%;
 }
 
 .main {
