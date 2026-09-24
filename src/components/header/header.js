@@ -8,19 +8,19 @@ import { useState } from "react";
 
 export default function Header() {
   const [showMobileHeader, setShowMobileHeader] = useState("none");
+  const [showCloseButton, setShowCloseButton] = useState("none");
+
+  const handleMobileHeader = () => {
+    setShowMobileHeader((actual) => (actual === "none" ? "flex" : "none"));
+  };
+
   return (
     <>
       <div className={styles.header}>
         <div>
           <img src={logo.src} className={styles.logo} />
         </div>
-        <div
-          onClick={() =>
-            setShowMobileHeader((actual) =>
-              actual === "none" ? "flex" : "none",
-            )
-          }
-        >
+        <div onClick={handleMobileHeader}>
           <img src={menu.src} className={styles.menu} />
         </div>
         <div className={styles.navbar}>
