@@ -15,17 +15,51 @@
   justify-content: space-around;
 }
 
-.navbar {
-  display: flex;
-  column-gap: 90;
-}
-
 .logo {
   width: 180px;
 }
 
-.menu {
+.menuButton {
   display: none;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.menuDrawing {
+  display: block;
+  margin: auto;
+}
+
+.topLine,
+.middleLine,
+.bottomLine {
+  transform-box: view-box;
+  transform-origin: 12px 12px;
+  transition:
+    transform 300ms ease-in-out,
+    opacity 150ms ease-in-out;
+}
+
+.open .topLine {
+  transform: rotate(45deg) translateY(7px);
+}
+
+.open .middleLine {
+  opacity: 0;
+}
+
+.open .bottomLine {
+  transform: rotate(-45deg) translateY(-7px);
+}
+
+.navbar {
+  display: flex;
+  column-gap: 90;
 }
 
 .mobileHeader {
@@ -34,9 +68,9 @@
 }
 
 /* até 950px */
-@media only screen and (max-width: 950px) {
-  .menu {
-    display: flex;
+@media (max-width: 950px) {
+  .menuButton {
+    display: block;
   }
   .navbar {
     display: none;
