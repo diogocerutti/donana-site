@@ -64,8 +64,26 @@
 
 .mobileHeader {
   display: none;
-  background-color: aliceblue;
-  height: 100%;
+  background-color: rgb(42 27 24 / 0.95);
+  color: #ffff;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 71.45px; /* altura do header */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  z-index: 20;
+  row-gap: 50;
+  padding-top: 50px;
+  font-size: 20px;
+  transform: translateX(100%);
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    transform 300ms ease-in-out,
+    visibility 0s linear 300ms;
 }
 
 /* abaixo de 950px */
@@ -76,7 +94,13 @@
   .navbar {
     display: none;
   }
-  .mobileHeader.open {
+  .mobileHeader {
     display: flex;
+  }
+  .mobileHeader.open {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
   }
 }
