@@ -63,11 +63,12 @@
 }
 
 .mobileHeader {
+  display: none;
   background-color: aliceblue;
   height: 100%;
 }
 
-/* até 950px */
+/* abaixo de 950px */
 @media (max-width: 950px) {
   .menuButton {
     display: block;
@@ -75,7 +76,7 @@
   .navbar {
     display: none;
   }
-  .mobileHeader {
+  .mobileHeader.open {
     display: flex;
   }
 }

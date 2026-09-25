@@ -46,11 +46,8 @@ export default function Header() {
           <HeaderItems />
         </div>
       </div>
-      <div
-        className={styles.mobileHeader}
-        style={{ display: showMobileHeader }}
-      >
-        asdasd
+      <div className={`${styles.mobileHeader} ${isOpen ? styles.open : ""}`}>
+        <HeaderItems />
       </div>
     </>
   );
