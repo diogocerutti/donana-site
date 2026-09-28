@@ -1,9 +1,10 @@
 import styles from "./page.module.css";
+import Carousel from "./components/carousel/carousel";
 
 export default function Home() {
   return (
     <div className={styles.page}>
-      <main className={styles.main}></main>
+      <Carousel />
     </div>
   );
 }
