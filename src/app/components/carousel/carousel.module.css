@@ -19,6 +19,23 @@
   opacity: 1;
 }
 
+.caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: calc(100% - 140px);
+  margin: 0;
+
+  color: white;
+  font-size: clamp(24px, 4vw, 48px);
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 2px 8px rgb(0 0 0 / 80%);
+  pointer-events: none;
+}
+
 .arrowButton {
   position: absolute;
   top: 50%;

@@ -50,7 +50,7 @@ export default function Carousel() {
           }`}
         />
       ))}
-
+      <p className={styles.caption}>Tradição e Qualidade desde 1991</p>
       <button
         type="button"
         className={`${styles.arrowButton} ${styles.previous}`}
