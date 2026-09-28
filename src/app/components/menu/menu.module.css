@@ -1,0 +1,16 @@
+.menu {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(28px, 4vw, 50px);
+  font-weight: bold;
+  color: #2a1b18;
+}
+
+.subtitle {
+  font-size: clamp(16px, 4vw, 25px);
+  text-align: justify;
+}
