@@ -7,4 +7,11 @@
 
 .image {
   width: 300px;
+  object-fit: cover;
+}
+
+@media (max-width: 950px) {
+  .about {
+    flex-direction: column;
+  }
 }

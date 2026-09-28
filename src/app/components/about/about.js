@@ -9,7 +9,7 @@ export default function About() {
         <h1>Sobre Nós</h1>
         <p>
           Somos uma empresa que visa o melhor para o cliente, com qualidade no
-          serviço e atendimento.x
+          serviço e atendimento.
         </p>
       </div>
     </div>
