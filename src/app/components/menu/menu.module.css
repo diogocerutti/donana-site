@@ -1,6 +1,4 @@
 .menu {
-  display: flex;
-  justify-content: center;
   text-align: center;
 }
 
@@ -13,4 +11,12 @@
 .subtitle {
   font-size: clamp(16px, 4vw, 25px);
   text-align: justify;
+}
+
+.imageBox {
+  align-items: center;
+}
+
+.image {
+  width: 200px;
 }
