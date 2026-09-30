@@ -15,7 +15,7 @@ export default function About() {
       <div className={styles.text}>
         <p className={`${styles.title} ${playfair.className}`}>Sobre Nós</p>
         <p className={styles.subtitle}>
-          Somos uma empresa que visa o melhor para o cliente, com qualidade no
+          Somos uma padaria que visa o melhor para o cliente, com qualidade no
           serviço e atendimento.
         </p>
       </div>
