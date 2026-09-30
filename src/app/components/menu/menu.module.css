@@ -1,22 +1,90 @@
 .menu {
   text-align: center;
+  padding: 20px;
+  margin-inline: auto;
+  max-width: 1300px;
+  width: 100%;
+}
+
+.text {
+  flex: 1;
+  min-width: 0;
+  margin-bottom: 40px;
 }
 
 .title {
   font-size: clamp(28px, 4vw, 50px);
   font-weight: bold;
   color: #2a1b18;
+  margin-bottom: 10;
 }
 
 .subtitle {
-  font-size: clamp(16px, 4vw, 25px);
+  font-size: clamp(16px, 6vw, 25px);
   text-align: justify;
 }
 
+.menuBox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+}
+
+.menuItem {
+  transition: transform 0.2s;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 10;
+  border-color: #2a1b18;
+  flex: 0 0 300px;
+  min-width: 0;
+}
+
+.menuItem:hover {
+  transform: scale(1.06);
+}
+
 .imageBox {
-  align-items: center;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.imageName {
+  font-size: clamp(24px, 10vw, 32px);
+  font-weight: bold;
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 24px 12px 12px;
+  color: white;
+  text-align: start;
+  background: linear-gradient(to bottom, rgb(0 0 0 / 50%), transparent);
 }
 
 .image {
-  width: 200px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 950px) {
+  .title {
+    text-align: start;
+  }
+  .menuBox {
+    flex-direction: column;
+  }
+  .menuItem {
+    flex: none;
+    width: 100%;
+  }
+  .menu {
+    max-width: 500px;
+  }
 }

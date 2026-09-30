@@ -1,5 +1,4 @@
 import styles from "./about.module.css";
-import aboutImg from "../../../../public/img/totem.png";
 import fachada from "../../../../public/img/fachada.png";
 import { Playfair_Display } from "next/font/google";
 

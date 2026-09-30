@@ -3,6 +3,7 @@
   width: 100%;
   height: clamp(240px, 50vw, 500px);
   overflow: hidden;
+  margin-bottom: 20;
 }
 
 .carouselImg {
