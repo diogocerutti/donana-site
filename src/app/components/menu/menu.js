@@ -1,15 +1,10 @@
 import styles from "./menu.module.css";
-import { Playfair_Display } from "next/font/google";
 import salgados from "../../../../public/img/salgados.jpeg";
 import torta from "../../../../public/img/torta.png";
 import pizzas from "../../../../public/img/pizzas.jpeg";
 import docinhos from "../../../../public/img/docinhos.jpeg";
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  display: "swap" /* mostra uma fonte alternativa enquanto essa é carregada */,
-});
+import { playfair } from "../../fonts/fonts";
 
 const images = [
   { src: torta.src, name: "Tortas" },

@@ -1,34 +1,18 @@
 import styles from "./about.module.css";
 import fachada from "../../../../public/img/fachada.png";
-import { Playfair_Display } from "next/font/google";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  display: "swap" /* mostra uma fonte alternativa enquanto essa é carregada */,
-});
+import { playfair } from "../../fonts/fonts";
 
 export default function About() {
   return (
-    <>
-      <div className={styles.about}>
-        <img className={styles.image} src={fachada.src} />
-        <div className={styles.text}>
-          <p className={`${styles.title} ${playfair.className}`}>Sobre Nós</p>
-          <p className={styles.subtitle}>
-            Somos uma padaria que visa o melhor para o cliente, com qualidade no
-            serviço e atendimento.
-          </p>
-        </div>
-      </div>
-      <div className={styles.location}>
-        <p className={`${styles.title} ${playfair.className}`}>
-          Nosso Estabelecimento
-        </p>
+    <div className={styles.about}>
+      <img className={styles.image} src={fachada.src} />
+      <div className={styles.text}>
+        <p className={`${styles.title} ${playfair.className}`}>Nossa missão</p>
         <p className={styles.subtitle}>
-          Estamos localizados no centro da cidade
+          Somos uma padaria que visa o melhor para o cliente, com serviço de
+          qualidade e atendimento de excelência.
         </p>
       </div>
-    </>
+    </div>
   );
 }
