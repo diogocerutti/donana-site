@@ -1,5 +1,6 @@
 import "./globals.css";
 import Header from "../components/header/header.js";
+import Footer from "../components/footer/footer.js";
 import { Urbanist } from "next/font/google";
 
 export const metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
       <body className={urbanist.className}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

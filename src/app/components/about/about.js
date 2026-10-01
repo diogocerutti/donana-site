@@ -10,15 +10,25 @@ const playfair = Playfair_Display({
 
 export default function About() {
   return (
-    <div className={styles.about}>
-      <img className={styles.image} src={fachada.src} />
-      <div className={styles.text}>
-        <p className={`${styles.title} ${playfair.className}`}>Sobre Nós</p>
+    <>
+      <div className={styles.about}>
+        <img className={styles.image} src={fachada.src} />
+        <div className={styles.text}>
+          <p className={`${styles.title} ${playfair.className}`}>Sobre Nós</p>
+          <p className={styles.subtitle}>
+            Somos uma padaria que visa o melhor para o cliente, com qualidade no
+            serviço e atendimento.
+          </p>
+        </div>
+      </div>
+      <div className={styles.location}>
+        <p className={`${styles.title} ${playfair.className}`}>
+          Nosso Estabelecimento
+        </p>
         <p className={styles.subtitle}>
-          Somos uma padaria que visa o melhor para o cliente, com qualidade no
-          serviço e atendimento.
+          Estamos localizados no centro da cidade
         </p>
       </div>
-    </div>
+    </>
   );
 }

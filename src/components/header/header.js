@@ -2,7 +2,7 @@
 
 import styles from "./header.module.css";
 import logo from "../../../public/img/logo.png";
-import HeaderItems from "./components/headerItems.js";
+import Navigator from "../navigator/navigator";
 import { useState } from "react";
 
 export default function Header() {
@@ -43,11 +43,11 @@ export default function Header() {
           </svg>
         </button>
         <div className={styles.navbar}>
-          <HeaderItems />
+          <Navigator />
         </div>
       </div>
       <div className={`${styles.mobileHeader} ${isOpen ? styles.open : ""}`}>
-        <HeaderItems />
+        <Navigator />
       </div>
     </>
   );

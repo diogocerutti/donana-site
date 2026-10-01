@@ -1,0 +1,50 @@
+.footer {
+  background-color: rgb(42 27 24);
+  color: #d1d5db;
+  display: flex;
+  padding: 60px;
+  text-align: justify;
+  gap: 150px;
+}
+
+.footerItem {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 423px;
+}
+
+.logo {
+  width: 118px;
+}
+
+.description {
+  font-size: clamp(15px, 4vw, 15px);
+}
+
+.icons {
+  display: flex;
+  gap: 10px;
+}
+
+.title {
+  font-size: clamp(17px, 4vw, 17px);
+  font-weight: bold;
+}
+
+.contactInfo {
+  display: flex;
+  gap: 10px;
+  font-size: clamp(15px, 4vw, 15px);
+}
+
+@media (max-width: 950px) {
+  .footer {
+    flex-direction: column;
+    gap: 50px;
+    padding: 40px;
+  }
+  .footerItem {
+    width: 100%;
+  }
+}
