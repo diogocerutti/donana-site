@@ -23,7 +23,7 @@ export default function Footer() {
         </div>
       </div>
       <div className={styles.footerItem}>
-        <p className={`${styles.title} ${playfair.className}`}>Menu</p>
+        <p className={`${styles.title} ${playfair.className}`}>Opções</p>
         <Navigator fontSize="14px" />
       </div>
       <div className={styles.footerItem}>

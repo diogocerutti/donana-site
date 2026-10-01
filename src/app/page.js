@@ -1,6 +1,7 @@
 import styles from "./page.module.css";
 import Carousel from "./components/carousel/carousel";
 import About from "./components/about/about";
+import Location from "./components/location/location";
 import Menu from "./components/menu/menu";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
     <div className={styles.page}>
       <Carousel />
       <About />
+      <Location />
       <Menu />
     </div>
   );
