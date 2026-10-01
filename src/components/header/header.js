@@ -47,7 +47,7 @@ export default function Header() {
         </div>
       </div>
       <div className={`${styles.mobileHeader} ${isOpen ? styles.open : ""}`}>
-        <Navigator />
+        <Navigator onNavigate={() => setShowMobileHeader("none")} />
       </div>
     </>
   );

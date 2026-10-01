@@ -15,7 +15,7 @@ const images = [
 
 export default function Menu() {
   return (
-    <div className={styles.menu}>
+    <div id="menu" className={styles.menu}>
       <div className={styles.text}>
         <p className={`${styles.title} ${playfair.className}`}>Menu</p>
         <p className={styles.subtitle}>
