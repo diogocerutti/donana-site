@@ -7,10 +7,14 @@ import docinhos from "../../../../public/img/docinhos.jpeg";
 import { playfair } from "../../fonts/fonts";
 
 const images = [
-  { src: torta.src, name: "Tortas" },
-  { src: salgados.src, name: "Salgados" },
-  { src: pizzas.src, name: "Pizzas" },
-  { src: docinhos.src, name: "Doces" },
+  {
+    src: torta.src,
+    name: "Tortas",
+    href: "/cardapios/NOVO CARDÁPIO DE TORTAS DIGITAL.pdf",
+  },
+  { src: salgados.src, name: "Salgados", href: "" },
+  { src: pizzas.src, name: "Pizzas", href: "" },
+  { src: docinhos.src, name: "Doces", href: "" },
 ];
 
 export default function Menu() {
@@ -25,7 +29,13 @@ export default function Menu() {
       </div>
       <div className={styles.menuBox}>
         {images.map((image, index) => (
-          <div key={image.name} className={styles.menuItem}>
+          <a
+            key={image.name}
+            href={image.href || undefined}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.menuItem}
+          >
             {" "}
             <div className={styles.imageBox}>
               <p className={`${styles.imageName} ${playfair.className}`}>
@@ -33,7 +43,7 @@ export default function Menu() {
               </p>
               <img src={image.src} alt={image.name} className={styles.image} />
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
