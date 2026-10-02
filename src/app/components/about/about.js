@@ -9,8 +9,8 @@ export default function About() {
       <div className={styles.text}>
         <p className={`${styles.title} ${playfair.className}`}>Nossa missão</p>
         <p className={styles.subtitle}>
-          Somos uma padaria que visa o melhor para o cliente, com serviço de
-          qualidade e atendimento de excelência.
+          Alimentar a alma das pessoas com amor e alegria, compartilhando o pão
+          nosso de cada dia!
         </p>
       </div>
     </div>

@@ -16,9 +16,9 @@ export default function Header() {
   return (
     <>
       <div className={styles.header}>
-        <div>
+        <a href="#">
           <img src={logo.src} className={styles.logo} />
-        </div>
+        </a>
         <button
           type="button"
           onClick={handleMobileHeader}
