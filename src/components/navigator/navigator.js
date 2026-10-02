@@ -1,12 +1,20 @@
+import Link from "next/link";
+
 export default function Navigator({ fontSize = "", onNavigate }) {
   return (
     <>
-      <a style={{ fontSize: fontSize }}>SOBRE NÓS</a>
-      <a href="#menu" onClick={onNavigate} style={{ fontSize: fontSize }}>
+      <Link href="/#about" style={{ fontSize: fontSize }}>
+        SOBRE NÓS
+      </Link>
+      <Link href="/#menu" onClick={onNavigate} style={{ fontSize: fontSize }}>
         MENU
-      </a>
-      <a style={{ fontSize: fontSize }}>CONTATO</a>
-      <a style={{ fontSize: fontSize }}>ORÇAMENTO</a>
+      </Link>
+      <Link href="/#contact" style={{ fontSize: fontSize }}>
+        CONTATO
+      </Link>
+      <Link href="/#price" style={{ fontSize: fontSize }}>
+        ORÇAMENTO
+      </Link>
     </>
   );
 }

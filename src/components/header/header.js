@@ -4,6 +4,7 @@ import styles from "./header.module.css";
 import logo from "../../../public/img/logo.png";
 import Navigator from "../navigator/navigator";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Header() {
   const [showMobileHeader, setShowMobileHeader] = useState("none");
@@ -16,9 +17,9 @@ export default function Header() {
   return (
     <>
       <div className={styles.header}>
-        <a href="#">
+        <Link href="/">
           <img src={logo.src} className={styles.logo} />
-        </a>
+        </Link>
         <button
           type="button"
           onClick={handleMobileHeader}
