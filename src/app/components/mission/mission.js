@@ -1,4 +1,4 @@
-import styles from "./about.module.css";
+import styles from "./mission.module.css";
 import fachada from "../../../../public/img/fachada.png";
 import { playfair } from "../../fonts/fonts";
 
