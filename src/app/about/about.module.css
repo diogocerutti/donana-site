@@ -1,18 +1,11 @@
-.mission {
+.about {
   display: flex;
   align-items: center;
-  gap: 24px;
   width: 100%;
   max-width: 1300px;
   margin-inline: auto;
   padding: 20px;
-}
-
-.image {
-  width: 45%;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 20px;
+  margin-top: 20px;
 }
 
 .text {

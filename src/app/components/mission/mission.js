@@ -2,9 +2,9 @@ import styles from "./mission.module.css";
 import fachada from "../../../../public/img/fachada.png";
 import { playfair } from "../../fonts/fonts";
 
-export default function About() {
+export default function Mission() {
   return (
-    <div className={styles.about}>
+    <div className={styles.mission}>
       <img className={styles.image} src={fachada.src} />
       <div className={styles.text}>
         <p className={`${styles.title} ${playfair.className}`}>Nossa missão</p>
