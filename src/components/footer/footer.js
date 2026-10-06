@@ -5,7 +5,7 @@ import logo from "../../../public/img/logo.png";
 import Navigator from "../navigator/navigator";
 import { FaWhatsapp, FaFacebookF, FaInstagram } from "react-icons/fa";
 
-import { playfair } from "@/app/fonts/fonts";
+import { playfair } from "@/fonts/fonts";
 
 export default function Footer() {
   return (

@@ -20,25 +20,12 @@
   min-width: 0;
 }
 
-.title {
-  font-size: clamp(28px, 4vw, 50px);
-  margin-bottom: 10px;
-  font-weight: bold;
-  color: #2a1b18;
-}
-
-.subtitle {
-  font-size: clamp(16px, 6vw, 25px);
-  text-align: justify;
-}
-
 @media (max-width: 950px) {
   .mission {
     flex-direction: column-reverse;
     max-width: 500px;
   }
-  .image,
-  .text {
+  .image {
     width: 100%;
   }
 }

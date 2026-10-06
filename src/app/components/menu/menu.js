@@ -3,8 +3,9 @@ import salgados from "../../../../public/img/salgados.jpeg";
 import torta from "../../../../public/img/torta.png";
 import pizzas from "../../../../public/img/pizzas.jpeg";
 import docinhos from "../../../../public/img/docinhos.jpeg";
+import { GlobalTitle, GlobalSubtitle } from "@/components/text/text";
 
-import { playfair } from "../../fonts/fonts";
+import { playfair } from "../../../fonts/fonts";
 
 const images = [
   {
@@ -21,11 +22,12 @@ export default function Menu() {
   return (
     <div id="menu" className={styles.menu}>
       <div className={styles.text}>
-        <p className={`${styles.title} ${playfair.className}`}>Menu</p>
-        <p className={styles.subtitle}>
-          Explore nossa linha completa de produtos, feitos diariamente com os
-          melhores ingredientes.
-        </p>
+        <GlobalTitle title={"Menu"} />
+        <GlobalSubtitle
+          subtitle={
+            "Explore nossa linha completa de produtos, feitos diariamente com os melhores ingredientes."
+          }
+        />
       </div>
       <div className={styles.menuBox}>
         {images.map((image, index) => (

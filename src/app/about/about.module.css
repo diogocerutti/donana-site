@@ -14,26 +14,23 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
-  gap: 30px;
 }
 
-.title {
-  font-size: clamp(28px, 4vw, 50px);
+.description {
+  text-align: center;
   font-weight: bold;
-  color: #2a1b18;
-}
-
-.subtitle {
-  font-size: clamp(16px, 6vw, 25px);
-  text-align: justify;
 }
 
 .descTitle {
   font-size: clamp(20px, 5vw, 32px);
-  font-weight: bold;
   color: #2a1b18;
-  text-align: center;
   font-style: italic;
+  margin-bottom: 10px;
+}
+
+.descSubtitle {
+  font-size: clamp(22px, 5vw, 22px);
+  color: #dbbc58;
 }
 
 .aboutBox {
@@ -63,18 +60,6 @@
   border-radius: 10px;
 }
 
-.imageName {
-  font-size: clamp(24px, 10vw, 32px);
-  font-weight: bold;
-  position: absolute;
-  inset: 0;
-  margin: 0;
-  padding: 24px 12px 12px;
-  color: white;
-  text-align: start;
-  background: linear-gradient(to bottom, rgb(0 0 0 / 30%), transparent);
-}
-
 .image {
   display: block;
   width: 100%;
@@ -84,10 +69,6 @@
 }
 
 @media (max-width: 950px) {
-  .title,
-  .subtitle {
-    text-align: justify;
-  }
   .aboutItem {
     flex: 0 0 400px;
   }

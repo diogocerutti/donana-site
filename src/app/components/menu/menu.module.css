@@ -1,28 +1,19 @@
 .menu {
   scroll-margin-top: 90px;
-  text-align: center;
   padding: 20px;
   margin-inline: auto;
   max-width: 1300px;
   width: 100%;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .text {
   flex: 1;
   min-width: 0;
   margin-bottom: 40px;
-}
-
-.title {
-  font-size: clamp(28px, 4vw, 50px);
-  font-weight: bold;
-  color: #2a1b18;
-  margin-bottom: 10px;
-}
-
-.subtitle {
-  font-size: clamp(16px, 6vw, 25px);
   text-align: center;
 }
 
@@ -74,8 +65,7 @@
 }
 
 @media (max-width: 950px) {
-  .title,
-  .subtitle {
+  .text {
     text-align: justify;
   }
   .menuBox {
