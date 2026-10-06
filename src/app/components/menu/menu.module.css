@@ -5,6 +5,7 @@
   margin-inline: auto;
   max-width: 1300px;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .text {
@@ -35,10 +36,7 @@
 
 .menuItem {
   transition: transform 0.2s;
-  border-style: solid;
-  border-width: 3px;
-  border-radius: 10px;
-  border-color: #2a1b18;
+  border: 10px solid transparent;
   flex: 0 0 300px;
   min-width: 0;
 }
@@ -52,6 +50,7 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .imageName {
@@ -63,7 +62,7 @@
   padding: 24px 12px 12px;
   color: white;
   text-align: start;
-  background: linear-gradient(to bottom, rgb(0 0 0 / 50%), transparent);
+  background: linear-gradient(to bottom, rgb(0 0 0 / 30%), transparent);
 }
 
 .image {

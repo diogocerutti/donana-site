@@ -17,8 +17,8 @@ export default function Header() {
   return (
     <>
       <div className={styles.header}>
-        <Link href="/">
-          <img src={logo.src} className={styles.logo} />
+        <Link href="/#home" onClick={() => setShowMobileHeader("none")}>
+          <img src={logo.src} className={styles.logo} alt="Página Inicial" />
         </Link>
         <button
           type="button"

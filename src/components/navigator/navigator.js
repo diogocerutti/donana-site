@@ -3,16 +3,20 @@ import Link from "next/link";
 export default function Navigator({ fontSize = "", onNavigate }) {
   return (
     <>
-      <Link href="/about" style={{ fontSize: fontSize }}>
+      <Link href="/about" onClick={onNavigate} style={{ fontSize: fontSize }}>
         SOBRE NÓS
       </Link>
       <Link href="/#menu" onClick={onNavigate} style={{ fontSize: fontSize }}>
         MENU
       </Link>
-      <Link href="/#contact" style={{ fontSize: fontSize }}>
+      <Link
+        href="/#contact"
+        onClick={onNavigate}
+        style={{ fontSize: fontSize }}
+      >
         CONTATO
       </Link>
-      <Link href="/#price" style={{ fontSize: fontSize }}>
+      <Link href="/#price" onClick={onNavigate} style={{ fontSize: fontSize }}>
         ORÇAMENTO
       </Link>
     </>
