@@ -19,6 +19,7 @@
 .description {
   text-align: center;
   font-weight: bold;
+  margin-top: 40px;
 }
 
 .descTitle {
@@ -41,15 +42,21 @@
   width: 100%;
 }
 
-.aboutItem {
+.aboutButton {
   transition: transform 0.2s;
   border: 10px solid transparent;
   flex: 0 0 300px;
   min-width: 0;
+  background: none;
 }
 
-.aboutItem:hover {
+.aboutButton:hover {
   transform: scale(1.06);
+  .zoomIcon {
+    display: block;
+    transition: transform 0.2s;
+    transform: scale(1.03);
+  }
 }
 
 .imageBox {
@@ -60,6 +67,18 @@
   border-radius: 10px;
 }
 
+.zoomIcon {
+  display: none;
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  align-self: center;
+  justify-self: center;
+  color: #ffff;
+  width: 36px;
+  height: 36px;
+}
+
 .image {
   display: block;
   width: 100%;
@@ -68,8 +87,21 @@
   object-position: center;
 }
 
+.zoomBox {
+  border-style: solid;
+  position: absolute;
+  width: 300px;
+  height: 500px;
+  justify-content: center;
+}
+
+.imageZoom {
+  object-fit: cover;
+  object-position: center;
+}
+
 @media (max-width: 950px) {
-  .aboutItem {
+  .aboutButton {
     flex: 0 0 400px;
   }
   .about {

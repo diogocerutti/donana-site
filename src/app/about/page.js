@@ -1,24 +1,35 @@
+"use client";
+
 import styles from "./about.module.css";
 
-import salgados from "../../../public/img/salgados.jpeg";
-import torta from "../../../public/img/torta.png";
-import pizzas from "../../../public/img/pizzas.jpeg";
-import docinhos from "../../../public/img/docinhos.jpeg";
+import evento from "../../../public/img/evento.png";
+import evento2 from "../../../public/img/evento2.png";
+import mesas from "../../../public/img/mesas.png";
+import ambiente from "../../../public/img/ambiente.png";
 
 import { playfair } from "../../fonts/fonts";
 import { GlobalTitle, GlobalSubtitle } from "@/components/text/text";
+import { RiZoomInFill } from "react-icons/ri";
+import { useState } from "react";
 
 const images = [
   {
-    src: torta.src,
-    href: "/cardapios/NOVO CARDÁPIO DE TORTAS DIGITAL.pdf",
+    src: evento.src,
   },
-  { src: salgados.src, href: "" },
-  { src: pizzas.src, href: "" },
-  { src: docinhos.src, href: "" },
+  { src: evento2.src },
+  { src: mesas.src },
+  { src: ambiente.src },
 ];
 
 export default function About() {
+  const [currentSrc, setCurrentSrc] = useState();
+  const [openZoomBox, setOpenZoomBox] = useState("none");
+
+  const handleOpenZoomBox = (imageSrc) => {
+    setOpenZoomBox((actual) => (actual === "none" ? "flex" : "none"));
+    setCurrentSrc(imageSrc);
+  };
+
   return (
     <div className={styles.about}>
       <div className={styles.text}>
@@ -35,19 +46,21 @@ export default function About() {
       </div>
       <div className={styles.aboutBox}>
         {images.map((image, index) => (
-          <a
+          <button
             key={image.src}
-            href={image.href || undefined}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.aboutItem}
+            className={styles.aboutButton}
+            onClick={() => handleOpenZoomBox(image.src)}
           >
             {" "}
             <div className={styles.imageBox}>
+              <RiZoomInFill className={styles.zoomIcon} />
               <img src={image.src} alt={image.name} className={styles.image} />
             </div>
-          </a>
+          </button>
         ))}
+      </div>
+      <div style={{ display: openZoomBox }} className={styles.zoomBox}>
+        <img src={currentSrc} className={styles.imageZoom} />
       </div>
     </div>
   );
