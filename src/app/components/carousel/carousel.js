@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { GlobalArrowLeft, GlobalArrowRight } from "@/components/svg/svg";
+import { playfair } from "@/fonts/fonts";
 
 import carousel1 from "../../../../public/img/inside.png";
 import carousel2 from "../../../../public/img/balcony.png";
@@ -51,7 +52,9 @@ export default function Carousel() {
           }`}
         />
       ))}
-      <p className={styles.caption}>Tradição e Qualidade desde 1991</p>
+      <p className={`${styles.caption} ${playfair.className}`}>
+        Tradição e Qualidade desde 1991
+      </p>
       <button
         type="button"
         className={`${styles.arrowButton} ${styles.previous}`}
