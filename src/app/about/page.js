@@ -82,7 +82,19 @@ export default function About() {
         >
           <GlobalArrowLeft />
         </button>
-        <img src={images[currentIndex].src} className={styles.imageZoom} />
+        <div className={styles.zoomImages}>
+          {images.map((image, index) => (
+            <img
+              key={image.src}
+              src={image.src}
+              alt={`Foto do ambiente ${index + 1}`}
+              aria-hidden={index !== currentIndex}
+              className={`${styles.imageZoom} ${
+                index === currentIndex ? styles.active : ""
+              }`}
+            />
+          ))}
+        </div>
         <button
           type="button"
           className={`${styles.arrowButton} ${styles.next}`}
