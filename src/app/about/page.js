@@ -11,6 +11,7 @@ import { playfair } from "../../fonts/fonts";
 import { GlobalTitle, GlobalSubtitle } from "@/components/text/text";
 import { GlobalArrowLeft, GlobalArrowRight } from "@/components/svg/svg";
 import { RiZoomInFill } from "react-icons/ri";
+import { IoMdClose } from "react-icons/io";
 import { useState } from "react";
 
 const images = [
@@ -26,10 +27,9 @@ export default function About() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [openZoomBox, setOpenZoomBox] = useState("none");
 
-  const handleOpenZoomBox = (index) => {
+  const handleZoomBox = (index) => {
     setOpenZoomBox((actual) => (actual === "none" ? "flex" : "none"));
     setCurrentIndex(index);
-    console.log("INDEX: ", index);
   };
 
   const changeImage = (direction) => {
@@ -57,7 +57,7 @@ export default function About() {
           <button
             key={image.src}
             className={styles.zoomButton}
-            onClick={() => handleOpenZoomBox(index)}
+            onClick={() => handleZoomBox(index)}
           >
             {" "}
             <div className={styles.imageBox}>
@@ -68,6 +68,12 @@ export default function About() {
         ))}
       </div>
       <div style={{ display: openZoomBox }} className={styles.zoomBox}>
+        <button
+          className={styles.closeButton}
+          onClick={() => setOpenZoomBox("none")}
+        >
+          <IoMdClose size={40} />
+        </button>
         <button
           type="button"
           className={`${styles.arrowButton} ${styles.previous}`}

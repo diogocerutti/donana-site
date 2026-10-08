@@ -3,6 +3,7 @@ import salgados from "../../../../public/img/salgados.jpeg";
 import torta from "../../../../public/img/torta.png";
 import pizzas from "../../../../public/img/pizzas.jpeg";
 import docinhos from "../../../../public/img/docinhos.jpeg";
+import buffet from "../../../../public/img/buffet.png";
 import { GlobalTitle, GlobalSubtitle } from "@/components/text/text";
 
 import { playfair } from "../../../fonts/fonts";
@@ -16,6 +17,7 @@ const images = [
   { src: salgados.src, name: "Salgados", href: "" },
   { src: pizzas.src, name: "Pizzas", href: "" },
   { src: docinhos.src, name: "Doces", href: "" },
+  { src: buffet.src, name: "Buffet", href: "/cardapios/PREÇOS DO BUFFET.pdf" },
 ];
 
 export default function Menu() {
