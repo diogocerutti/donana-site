@@ -9,6 +9,7 @@ import ambiente from "../../../public/img/ambiente.png";
 
 import { playfair } from "../../fonts/fonts";
 import { GlobalTitle, GlobalSubtitle } from "@/components/text/text";
+import { GlobalArrowLeft, GlobalArrowRight } from "@/components/svg/svg";
 import { RiZoomInFill } from "react-icons/ri";
 import { useState } from "react";
 
@@ -22,12 +23,19 @@ const images = [
 ];
 
 export default function About() {
-  const [currentSrc, setCurrentSrc] = useState();
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [openZoomBox, setOpenZoomBox] = useState("none");
 
-  const handleOpenZoomBox = (imageSrc) => {
+  const handleOpenZoomBox = (index) => {
     setOpenZoomBox((actual) => (actual === "none" ? "flex" : "none"));
-    setCurrentSrc(imageSrc);
+    setCurrentIndex(index);
+    console.log("INDEX: ", index);
+  };
+
+  const changeImage = (direction) => {
+    setCurrentIndex(
+      (current) => (current + direction + images.length) % images.length, // % -> resto da divisão
+    );
   };
 
   return (
@@ -48,8 +56,8 @@ export default function About() {
         {images.map((image, index) => (
           <button
             key={image.src}
-            className={styles.aboutButton}
-            onClick={() => handleOpenZoomBox(image.src)}
+            className={styles.zoomButton}
+            onClick={() => handleOpenZoomBox(index)}
           >
             {" "}
             <div className={styles.imageBox}>
@@ -60,7 +68,23 @@ export default function About() {
         ))}
       </div>
       <div style={{ display: openZoomBox }} className={styles.zoomBox}>
-        <img src={currentSrc} className={styles.imageZoom} />
+        <button
+          type="button"
+          className={`${styles.arrowButton} ${styles.previous}`}
+          aria-label="Imagem anterior"
+          onClick={() => changeImage(-1)}
+        >
+          <GlobalArrowLeft />
+        </button>
+        <img src={images[currentIndex].src} className={styles.imageZoom} />
+        <button
+          type="button"
+          className={`${styles.arrowButton} ${styles.next}`}
+          aria-label="Próxima imagem"
+          onClick={() => changeImage(1)}
+        >
+          <GlobalArrowRight />
+        </button>
       </div>
     </div>
   );
