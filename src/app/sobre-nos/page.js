@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./about.module.css";
+import styles from "./sobre-nos.module.css";
 
 import evento from "../../../public/img/evento.png";
 import evento2 from "../../../public/img/evento2.png";
@@ -23,7 +23,7 @@ const images = [
   { src: ambiente.src },
 ];
 
-export default function About() {
+export default function SobreNos() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [openZoomBox, setOpenZoomBox] = useState("none");
 
