@@ -49,7 +49,6 @@ export default function Contato() {
             <div className={styles.icon}>
               <MailIcon />
             </div>
-
             <div className={styles.infoData}>
               <p className={styles.itemTitle}>E-mail</p>
               <p className={styles.itemSubtitle}>
@@ -64,36 +63,68 @@ export default function Contato() {
             <div className={styles.infoData}>
               <p className={styles.itemTitle}>Telefone</p>
               <p className={styles.itemSubtitle}>(49) 3322-1058</p>
-              <p className={styles.itemSubtitle}>
-                <MdWhatsapp /> (49) 98817-4925
+              <p
+                style={{ color: "rgb(212 175 55 / 1" }}
+                className={styles.itemSubtitle}
+              >
+                <MdWhatsapp color="#1ca017" /> (49) 98817-4925
               </p>
             </div>
           </div>
         </div>
-        <div className={styles.message}>
-          <p className={`${styles.title} ${playfair.className}`}>
+        <form className={styles.message}>
+          <p
+            style={{ color: "rgb(42 27 24 / 1" }}
+            className={`${styles.title} ${playfair.className}`}
+          >
             Envie uma Mensagem
           </p>
           <div className={styles.msgItem}>
-            <p>Nome Completo*</p>
-            <input placeholder="Digite o seu nome"></input>
+            <label for="name">Nome Completo*</label>
+            <input
+              required
+              className={styles.inputField}
+              type="text"
+              placeholder="Digite o seu nome"
+              id="name"
+            />
           </div>
           <div className={styles.phoneMail}>
             <div className={styles.msgItem}>
-              <p>E-mail*</p>
-              <input placeholder="seu@email.com"></input>
+              <label for="email">E-mail*</label>
+              <input
+                required
+                className={styles.inputField}
+                type="email"
+                placeholder="seu@email.com"
+                id="email"
+              />
             </div>
             <div className={styles.msgItem}>
-              <p>Telefone*</p>
-              <input placeholder="(00)00000-0000"></input>
+              <label for="phone">Telefone*</label>
+              <input
+                required
+                className={styles.inputField}
+                type="tel"
+                placeholder="(00)00000-0000"
+                id="phone"
+              />
             </div>
           </div>
           <div className={styles.msgItem}>
-            <p>Mensagem*</p>
-            <input type="text" placeholder="Como podemos te ajudar?"></input>
+            <label for="message">Mensagem*</label>
+            <textarea
+              id="message"
+              required
+              className={styles.inputMsg}
+              placeholder="Como podemos te ajudar?"
+              rows={5}
+            />
           </div>
-          <button>Enviar Mensagem</button>
-        </div>
+          <button type="submit" className={styles.formButton}>
+            Enviar Mensagem
+          </button>
+        </form>
       </div>
     </div>
   );

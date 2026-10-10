@@ -12,21 +12,28 @@
 .contactForm {
   display: flex;
   margin-top: 40px;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 12%);
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-.info {
-  background-color: rgb(42 27 24 / var(--tw-text-opacity, 1));
+.info,
+.message {
   display: flex;
   flex-direction: column;
-  color: #ffff;
   font-weight: bold;
-  border-radius: 20px;
   gap: 40px;
   padding: 40px;
 }
 
+.info {
+  background-color: rgb(42 27 24 / 1);
+  color: #ffff;
+  width: 45%;
+}
+
 .title {
-  font-size: clamp(30px, 5vw, 30px);
+  font-size: 30px;
 }
 
 .infoItem {
@@ -36,50 +43,102 @@
 
 .icon {
   padding: 5px;
-  background: rgb(200 16 46 / var(--tw-bg-opacity, 1));
-  width: 60px;
-  height: 60px;
+  background: rgb(200 16 46 / 1);
+  width: 48px;
+  height: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .infoData {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .itemTitle {
-  font-size: clamp(18px, 5vw, 18px);
+  font-size: 18px;
 }
 
 .itemSubtitle {
   color: #cad4da;
+  font-size: 16px;
 }
 
 .message {
-  display: flex;
-  flex-direction: column;
-  font-weight: bold;
-  border-radius: 20px;
-  gap: 40px;
-  padding: 40px;
+  width: 55%;
+  min-width: 0;
 }
 
 .msgItem {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contactForm input,
+.contactForm textarea {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: rgb(229 231 235 / 1);
+  padding: 12px 20px;
+  width: 100%;
+  min-width: 0;
+}
+
+.inputField {
+  height: 50px;
 }
 
 .phoneMail {
   display: flex;
+  gap: 40px;
+}
+
+.phoneMail > .msgItem {
+  flex: 1;
+  min-width: 0;
+}
+
+.inputMsg {
+  text-align: left;
+  resize: vertical;
+}
+
+.formButton {
+  height: 50px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: rgb(200 16 46 / 1);
+  padding: 12px 20px;
+  color: #ffff;
+  cursor: pointer;
+  max-width: 210px;
+  align-self: center;
+}
+
+.formButton:hover {
+  background: rgb(42 27 24 / 1);
 }
 
 @media (max-width: 950px) {
-  .contactForm {
-    flex-direction: column;
-  }
+  .contactForm,
   .phoneMail {
     flex-direction: column;
+  }
+  .info,
+  .message {
+    width: 100%;
+    padding: 20px;
+    gap: 20px;
+  }
+  .phoneMail {
+    gap: 20px;
   }
 }
