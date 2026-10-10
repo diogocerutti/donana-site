@@ -80,7 +80,7 @@ export default function Contato() {
             Envie uma Mensagem
           </p>
           <div className={styles.msgItem}>
-            <label for="name">Nome Completo*</label>
+            <label htmlFor="name">Nome Completo*</label>
             <input
               required
               className={styles.inputField}
@@ -91,7 +91,7 @@ export default function Contato() {
           </div>
           <div className={styles.phoneMail}>
             <div className={styles.msgItem}>
-              <label for="email">E-mail*</label>
+              <label htmlFor="email">E-mail*</label>
               <input
                 required
                 className={styles.inputField}
@@ -101,7 +101,7 @@ export default function Contato() {
               />
             </div>
             <div className={styles.msgItem}>
-              <label for="phone">Telefone*</label>
+              <label htmlFor="phone">Telefone*</label>
               <input
                 required
                 className={styles.inputField}
@@ -112,7 +112,7 @@ export default function Contato() {
             </div>
           </div>
           <div className={styles.msgItem}>
-            <label for="message">Mensagem*</label>
+            <label htmlFor="message">Mensagem*</label>
             <textarea
               id="message"
               required
