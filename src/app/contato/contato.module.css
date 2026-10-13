@@ -21,7 +21,6 @@
 .message {
   display: flex;
   flex-direction: column;
-  font-weight: bold;
   gap: 40px;
   padding: 40px;
 }
@@ -34,6 +33,7 @@
 
 .title {
   font-size: 30px;
+  font-weight: bold;
 }
 
 .infoItem {
@@ -64,6 +64,7 @@
 
 .itemTitle {
   font-size: 18px;
+  font-weight: bold;
 }
 
 .itemSubtitle {
@@ -82,6 +83,10 @@
   flex-direction: column;
 }
 
+.msgItem label {
+  font-weight: bold;
+}
+
 .contactForm input,
 .contactForm textarea {
   border: 1px solid #ddd;
@@ -94,6 +99,10 @@
 
 .inputField {
   height: 50px;
+}
+
+.errorMsg {
+  color: red;
 }
 
 .phoneMail {
@@ -121,6 +130,7 @@
   cursor: pointer;
   max-width: 210px;
   align-self: center;
+  font-weight: bold;
 }
 
 .formButton:hover {
