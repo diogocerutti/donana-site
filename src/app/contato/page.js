@@ -15,11 +15,14 @@ import {
 import { MdWhatsapp } from "react-icons/md";
 
 export default function Contato() {
+  const [mensagemSucesso, setMensagemSucesso] = useState("");
+
   const {
     register,
     handleSubmit,
     setError,
     clearErrors,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm({
     mode: "onBlur", // valida quando sai de um campo
@@ -33,26 +36,26 @@ export default function Contato() {
 
   async function onSubmit(dados) {
     clearErrors("root");
-    setEmailVerificado(false);
+    setMensagemSucesso("");
 
     try {
-      const resposta = await fetch("/api/validar-email", {
+      const resposta = await fetch("/api/contato", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          email: dados.email,
-        }),
-        signal: AbortSignal.timeout(30000),
+        body: JSON.stringify(dados),
+        signal: AbortSignal.timeout(45000),
       });
 
       const resultado = await resposta.json();
 
       if (!resposta.ok) {
-        if (resultado.campo === "email") {
+        const campos = ["nome", "email", "telefone", "mensagem"];
+
+        if (campos.includes(resultado.campo)) {
           setError(
-            "email",
+            resultado.campo,
             {
               type: "server",
               message: resultado.mensagem,
@@ -63,30 +66,27 @@ export default function Contato() {
           setError("root.servidor", {
             type: "server",
             message:
-              resultado.mensagem || "Não foi possível verificar o e-mail.",
+              resultado.mensagem || "Não foi possível confirmar o envio.",
           });
         }
 
         return;
       }
 
-      if (resultado.valido !== true) {
+      if (resultado.enviado !== true) {
         throw new Error("Resposta inesperada.");
       }
 
-      setEmailVerificado(true);
-
-      // Na próxima etapa, o envio será implementado no servidor.
+      reset();
+      setMensagemSucesso("E-mail enviado com sucesso!");
     } catch {
       setError("root.servidor", {
         type: "server",
         message:
-          "Não foi possível verificar o e-mail. Tente novamente mais tarde.",
+          "Não foi possível confirmar o envio. Aguarde antes de tentar novamente.",
       });
     }
   }
-
-  const [emailVerificado, setEmailVerificado] = useState(false);
 
   return (
     <div className={styles.contact}>
@@ -201,7 +201,6 @@ export default function Contato() {
                     value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                     message: "Campo Inválido",
                   },
-                  onChange: () => setEmailVerificado(false),
                 })}
               />
               {errors.email && (
@@ -274,17 +273,13 @@ export default function Contato() {
             </p>
           )}
 
-          {emailVerificado && (
-            <p role="status">
-              E-mail validado pelo ZeroBounce. A mensagem ainda não foi enviada.
-            </p>
-          )}
+          {mensagemSucesso && <p role="status">{mensagemSucesso}</p>}
           <button
             type="submit"
             className={styles.formButton}
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Validando e-mail..." : "Enviar Mensagem"}
+            {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
           </button>
         </form>
       </div>
