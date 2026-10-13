@@ -85,6 +85,7 @@
 
 .msgItem label {
   font-weight: bold;
+  color: rgb(42 27 24 / 1);
 }
 
 .contactForm input,
