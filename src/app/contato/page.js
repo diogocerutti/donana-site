@@ -72,7 +72,7 @@ export default function Contato() {
       }
 
       reset();
-      setMensagemSucesso("E-mail enviado com sucesso!");
+      setMensagemSucesso("✅ E-mail enviado com sucesso!");
     } catch {
       setError("root.servidor", {
         type: "server",
@@ -106,6 +106,7 @@ export default function Contato() {
           <div className={styles.msgItem}>
             <label htmlFor="nome">Nome Completo*</label>
             <input
+              maxLength={120}
               id="nome"
               type="text"
               autoComplete="name"
@@ -115,6 +116,10 @@ export default function Contato() {
               aria-describedby={errors.nome ? "erro-nome" : undefined}
               {...register("nome", {
                 required: "Informe seu nome.",
+                maxLength: {
+                  value: 120,
+                  message: "O nome deve ter no máximo 120 caracteres.",
+                },
                 validate: (valor) =>
                   valor.trim().length >= 5 ||
                   "O nome deve ter pelo menos 5 caracteres.",
@@ -131,6 +136,7 @@ export default function Contato() {
             <div className={styles.msgItem}>
               <label htmlFor="email">E-mail*</label>
               <input
+                maxLength={254}
                 required
                 id="email"
                 type="email"
@@ -141,6 +147,10 @@ export default function Contato() {
                 aria-describedby={errors.email ? "erro-email" : undefined}
                 {...register("email", {
                   required: "Informe seu e-mail.",
+                  maxLength: {
+                    value: 254,
+                    message: "O e-mail deve ter no máximo 254 caracteres.",
+                  },
                   setValueAs: (valor) => valor.trim(),
                   pattern: {
                     value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
@@ -192,6 +202,7 @@ export default function Contato() {
           <div className={styles.msgItem}>
             <label htmlFor="mensagem">Mensagem*</label>
             <textarea
+              maxLength={1000}
               required
               id="mensagem"
               rows={5}
@@ -201,6 +212,10 @@ export default function Contato() {
               aria-describedby={errors.mensagem ? "erro-mensagem" : undefined}
               {...register("mensagem", {
                 required: "Informe sua mensagem.",
+                maxLength: {
+                  value: 1000,
+                  message: "A mensagem deve ter no máximo 1000 caracteres.",
+                },
                 validate: (valor) =>
                   valor.trim().length >= 5 ||
                   "A mensagem deve ter pelo menos 5 caracteres.",
@@ -218,7 +233,20 @@ export default function Contato() {
             </p>
           )}
 
-          {mensagemSucesso && <p role="status">{mensagemSucesso}</p>}
+          {mensagemSucesso && (
+            <div className={styles.success}>
+              <p role="status">{mensagemSucesso}</p>
+
+              <button
+                type="button"
+                className={styles.closeSuccess}
+                onClick={() => setMensagemSucesso("")}
+                aria-label="Fechar"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+          )}
           <button
             type="submit"
             className={styles.formButton}

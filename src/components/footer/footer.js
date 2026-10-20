@@ -1,5 +1,6 @@
 "use client";
 
+import data from "@/data/data.json";
 import styles from "./footer.module.css";
 import logo from "../../../public/img/logo.png";
 import Navigator from "../navigator/navigator";
@@ -30,18 +31,15 @@ export default function Footer() {
         <p className={`${styles.title} ${playfair.className}`}>Contato</p>
         <div className={styles.contactInfo}>
           <p>📍</p>
-          <p>
-            Rua Sete de Setembro, Nº 620-D, Bairro Presidente Médici, Chapecó -
-            SC
-          </p>
+          <p>{data.contact.address}</p>
         </div>
         <div className={styles.contactInfo}>
           <p>📞</p>
-          <p>(49) 98817-4925</p>
+          <p>{data.contact.cellphone}</p>
         </div>
         <div className={styles.contactInfo}>
           <p>✉️</p>
-          <p>falecom@padariadonana.com.br</p>
+          <p>{data.contact.email}</p>
         </div>
       </div>
     </div>

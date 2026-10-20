@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 export const runtime = "nodejs";
 
 function responder(dados, status) {
@@ -41,11 +42,11 @@ export async function POST(request) {
     );
   }
 
-  if (mensagem.length < 5 || mensagem.length > 5000) {
+  if (mensagem.length < 5 || mensagem.length > 1000) {
     return responder(
       {
         campo: "mensagem",
-        mensagem: "Informe uma mensagem entre 5 e 5000 caracteres.",
+        mensagem: "Informe uma mensagem entre 5 e 1000 caracteres.",
       },
       422,
     );
@@ -69,17 +70,16 @@ export async function POST(request) {
     }
   }
 
-  // Valida também no servidor antes de gastar um crédito.
+  // Valida o formato do e-mail também no servidor antes do envio.
   if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return responder({ campo: "email", mensagem: "Campo Inválido" }, 422);
   }
 
-  const apiKey = process.env.ZEROBOUNCE_API_KEY;
   const resendApiKey = process.env.RESEND_API_KEY;
   const remetente = process.env.CONTACT_FROM_EMAIL;
   const destinatario = process.env.CONTACT_TO_EMAIL;
 
-  if (!apiKey || !resendApiKey || !remetente || !destinatario) {
+  if (!resendApiKey || !remetente || !destinatario) {
     return responder(
       {
         mensagem: "O formulário está temporariamente indisponível.",
@@ -89,115 +89,54 @@ export async function POST(request) {
   }
 
   try {
-    const resposta = await fetch("https://api.zerobounce.net/v2/validate", {
+    const respostaEnvio = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: `Bearer ${resendApiKey}`,
+        "Content-Type": "application/json",
       },
-      body: new URLSearchParams({
-        api_key: apiKey,
-        email,
-        timeout: "20",
+      body: JSON.stringify({
+        from: remetente,
+        to: [destinatario],
+        reply_to: email,
+        subject: `Nova mensagem pelo site — Donana [${randomUUID()}]`,
+        headers: {
+          "X-Entity-Ref-ID": randomUUID(),
+        },
+        text: [
+          `Nome: ${nome}`,
+          `E-mail: ${email}`,
+          `Telefone: ${telefone || "Não informado"}`,
+          "",
+          "Mensagem:",
+          mensagem,
+        ].join("\n"),
       }),
-      cache: "no-store",
-      signal: AbortSignal.timeout(25000),
+      signal: AbortSignal.timeout(15000),
     });
 
-    if (!resposta.ok) {
-      throw new Error("Falha na consulta.");
+    if (!respostaEnvio.ok) {
+      throw new Error("Falha no envio.");
     }
 
-    const resultado = await resposta.json();
+    const envio = await respostaEnvio.json();
 
-    // Caso de chave inválida ou falta de créditos.
-    if (resultado.error || !resultado.status) {
-      throw new Error("Validação indisponível.");
+    if (!envio.id) {
+      throw new Error("Envio não confirmado.");
     }
 
-    if (resultado.status === "valid") {
-      try {
-        const respostaEnvio = await fetch("https://api.resend.com/emails", {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${resendApiKey}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            from: remetente,
-            to: [destinatario],
-            reply_to: email,
-            subject: "Nova mensagem pelo site — Donana",
-            text: [
-              `Nome: ${nome}`,
-              `E-mail: ${email}`,
-              `Telefone: ${telefone || "Não informado"}`,
-              "",
-              "Mensagem:",
-              mensagem,
-            ].join("\n"),
-          }),
-          signal: AbortSignal.timeout(15000),
-        });
-
-        if (!respostaEnvio.ok) {
-          throw new Error("Falha no envio.");
-        }
-
-        const envio = await respostaEnvio.json();
-
-        if (!envio.id) {
-          throw new Error("Envio não confirmado.");
-        }
-
-        return responder(
-          {
-            enviado: true,
-            mensagem: "E-mail enviado com sucesso!",
-          },
-          200,
-        );
-      } catch {
-        return responder(
-          {
-            mensagem:
-              "Não foi possível confirmar o envio. Aguarde antes de tentar novamente.",
-          },
-          503,
-        );
-      }
-    }
-
-    if (resultado.status === "invalid") {
-      return responder({ campo: "email", mensagem: "Campo Inválido" }, 422);
-    }
-
-    if (resultado.status === "unknown" || resultado.status === "catch-all") {
-      return responder(
-        {
-          campo: "email",
-          mensagem:
-            "Não foi possível confirmar este e-mail. Confira o endereço ou tente novamente mais tarde.",
-        },
-        422,
-      );
-    }
-
-    if (["spamtrap", "abuse", "do_not_mail"].includes(resultado.status)) {
-      return responder(
-        {
-          campo: "email",
-          mensagem: "Este endereço não pode ser utilizado no formulário.",
-        },
-        422,
-      );
-    }
-
-    throw new Error("Resultado inesperado.");
+    return responder(
+      {
+        enviado: true,
+        mensagem: "E-mail enviado com sucesso!",
+      },
+      200,
+    );
   } catch {
     return responder(
       {
         mensagem:
-          "Não foi possível verificar seu e-mail. Tente novamente mais tarde.",
+          "Não foi possível confirmar o envio. Aguarde antes de tentar novamente.",
       },
       503,
     );
