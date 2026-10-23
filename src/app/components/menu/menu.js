@@ -24,12 +24,8 @@ export default function Menu() {
   return (
     <div id="menu" className={styles.menu}>
       <div className={styles.text}>
-        <GlobalTitle title={"Menu"} />
-        <GlobalSubtitle
-          subtitle={
-            "Explore nossa linha completa de produtos, feitos diariamente com os melhores ingredientes."
-          }
-        />
+        <GlobalTitle title="Menu" />
+        <GlobalSubtitle subtitle="Explore nossa linha completa de produtos, feitos diariamente com os melhores ingredientes." />
       </div>
       <div className={styles.menuBox}>
         {images.map((image, index) => (

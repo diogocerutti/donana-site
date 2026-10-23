@@ -9,7 +9,7 @@
   margin-bottom: 20px;
 }
 
-.contactForm {
+.container {
   display: flex;
   margin-top: 40px;
   box-shadow: 0 2px 12px rgb(0 0 0 / 12%);
@@ -17,64 +17,19 @@
   overflow: hidden;
 }
 
-.info,
-.message {
+.form {
   display: flex;
   flex-direction: column;
   gap: 40px;
   padding: 40px;
-}
-
-.info {
-  background-color: rgb(42 27 24 / 1);
-  color: #ffff;
-  width: 45%;
+  width: 55%;
+  min-width: 0;
 }
 
 .title {
   font-size: 30px;
   font-weight: bold;
-}
-
-.infoItem {
-  display: flex;
-  gap: 15px;
-}
-
-.icon {
-  padding: 5px;
-  background: rgb(200 16 46 / 1);
-  width: 48px;
-  height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.infoData {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex: 1;
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
-.itemTitle {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.itemSubtitle {
-  color: #cad4da;
-  font-size: 16px;
-}
-
-.message {
-  width: 55%;
-  min-width: 0;
+  color: #2a1b18;
 }
 
 .msgItem {
@@ -88,18 +43,18 @@
   color: rgb(42 27 24 / 1);
 }
 
-.contactForm input,
-.contactForm textarea {
+.msgItem input {
+  height: 50px;
+}
+
+.container input,
+.container textarea {
   border: 1px solid #ddd;
   border-radius: 10px;
   background: rgb(229 231 235 / 1);
   padding: 12px 20px;
   width: 100%;
   min-width: 0;
-}
-
-.inputField {
-  height: 50px;
 }
 
 .errorMsg {
@@ -210,13 +165,21 @@
   background: rgb(42 27 24 / 1);
 }
 
+.formButton:hover:not(:disabled) {
+  background: #2a1b18;
+}
+
+.formButton:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
 @media (max-width: 950px) {
-  .contactForm,
+  .container,
   .phoneMail {
     flex-direction: column;
   }
-  .info,
-  .message {
+  .form {
     width: 100%;
     padding: 20px;
     gap: 20px;

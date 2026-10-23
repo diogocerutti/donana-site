@@ -3,7 +3,7 @@ import styles from "./text.module.css";
 
 export function GlobalTitle({ title }) {
   return (
-    <p className={`${styles.globalTitle} ${playfair.className}`}>{title}</p>
+    <h1 className={`${styles.globalTitle} ${playfair.className}`}>{title}</h1>
   );
 }
 

@@ -7,12 +7,8 @@ export default function Mission() {
     <div className={styles.mission}>
       <img className={styles.image} src={fachada.src} />
       <div className={styles.text}>
-        <GlobalTitle title={"Nossa Missão"} />
-        <GlobalSubtitle
-          subtitle={
-            "Alimentar a alma das pessoas com amor e alegria, compartilhando o pão nosso de cada dia!"
-          }
-        />
+        <GlobalTitle title="Nossa Missão" />
+        <GlobalSubtitle subtitle="Alimentar a alma das pessoas com amor e alegria, compartilhando o pão nosso de cada dia!" />
       </div>
     </div>
   );

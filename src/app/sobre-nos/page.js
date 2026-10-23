@@ -41,12 +41,8 @@ export default function SobreNos() {
   return (
     <div className={styles.about}>
       <div className={styles.text}>
-        <GlobalTitle title={"Sobre Nós"} />
-        <GlobalSubtitle
-          subtitle={
-            "Somos uma empresa que visa o melhor para o cliente, com qualidade no serviço e atendimento. Deixando seus eventos mais deliciosos com nossos produtos."
-          }
-        />
+        <GlobalTitle title="Sobre Nós" />
+        <GlobalSubtitle subtitle="Somos uma empresa que visa o melhor para o cliente, com qualidade no serviço e atendimento. Deixando seus eventos mais deliciosos com nossos produtos." />
         <div className={`${styles.description} ${playfair.className}`}>
           <p className={styles.descTitle}>Nosso Ambiente</p>
           <p className={styles.descSubtitle}>Momentos Don'Ana</p>

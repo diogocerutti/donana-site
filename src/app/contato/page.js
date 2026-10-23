@@ -84,34 +84,27 @@ export default function Contato() {
 
   return (
     <div className={styles.contact}>
-      <GlobalTitle title={"Contato"} />
-      <GlobalSubtitle
-        subtitle={
-          "Tem alguma dúvida, reclamação, sugestão ou elogio? Entre em contato conosco."
-        }
-      />
-      <div className={styles.contactForm}>
+      <GlobalTitle title="Contato" />
+      <GlobalSubtitle subtitle="Tem alguma dúvida, reclamação, sugestão ou elogio? Entre em contato conosco." />
+      <div className={styles.container}>
         <Info />
         <form
-          className={styles.message}
+          className={styles.form}
           onSubmit={handleSubmit(onSubmit)}
           noValidate
         >
-          <p
-            style={{ color: "rgb(42 27 24 / 1" }}
-            className={`${styles.title} ${playfair.className}`}
-          >
+          <h2 className={`${styles.title} ${playfair.className}`}>
             Envie uma Mensagem
-          </p>
+          </h2>
           <div className={styles.msgItem}>
             <label htmlFor="nome">Nome Completo*</label>
             <input
+              readOnly={isSubmitting}
               maxLength={120}
               id="nome"
               type="text"
               autoComplete="name"
               placeholder="Digite o seu nome"
-              className={styles.inputField}
               aria-invalid={Boolean(errors.nome)}
               aria-describedby={errors.nome ? "erro-nome" : undefined}
               {...register("nome", {
@@ -136,13 +129,13 @@ export default function Contato() {
             <div className={styles.msgItem}>
               <label htmlFor="email">E-mail*</label>
               <input
+                readOnly={isSubmitting}
                 maxLength={254}
                 required
                 id="email"
                 type="email"
                 autoComplete="email"
                 placeholder="seu@email.com"
-                className={styles.inputField}
                 aria-invalid={Boolean(errors.email)}
                 aria-describedby={errors.email ? "erro-email" : undefined}
                 {...register("email", {
@@ -167,14 +160,19 @@ export default function Contato() {
             <div className={styles.msgItem}>
               <label htmlFor="telefone">Telefone (opcional)</label>
               <input
+                maxLength={25}
+                readOnly={isSubmitting}
                 id="telefone"
                 type="tel"
                 autoComplete="tel-national"
                 placeholder="(00)00000-0000"
-                className={styles.inputField}
                 aria-invalid={Boolean(errors.telefone)}
                 aria-describedby={errors.telefone ? "erro-telefone" : undefined}
                 {...register("telefone", {
+                  maxLength: {
+                    value: 25,
+                    message: "O telefone deve ter no máximo 25 caracteres.",
+                  },
                   validate: (valor) => {
                     // Telefone é opcional.
                     if (!valor.trim()) return true;
@@ -202,6 +200,7 @@ export default function Contato() {
           <div className={styles.msgItem}>
             <label htmlFor="mensagem">Mensagem*</label>
             <textarea
+              readOnly={isSubmitting}
               maxLength={1000}
               required
               id="mensagem"

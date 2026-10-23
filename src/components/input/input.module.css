@@ -1,0 +1,10 @@
+.globalInput {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.globalInput label {
+  font-weight: bold;
+  color: rgb(42 27 24 / 1);
+}

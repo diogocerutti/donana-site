@@ -1,0 +1,19 @@
+.orcamento {
+  display: flex;
+  width: 100%;
+  max-width: 1300px;
+  margin-inline: auto;
+  padding: 20px;
+  margin-top: 20px;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.orcForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inputField {
+}
