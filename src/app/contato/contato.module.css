@@ -38,12 +38,12 @@
   flex-direction: column;
 }
 
-.msgItem label {
+.container label {
   font-weight: bold;
   color: rgb(42 27 24 / 1);
 }
 
-.msgItem input {
+.container input {
   height: 50px;
 }
 
@@ -55,6 +55,11 @@
   padding: 12px 20px;
   width: 100%;
   min-width: 0;
+}
+
+.container textarea {
+  text-align: left;
+  resize: vertical;
 }
 
 .errorMsg {
@@ -141,11 +146,6 @@
 .phoneMail > .msgItem {
   flex: 1;
   min-width: 0;
-}
-
-.inputMsg {
-  text-align: left;
-  resize: vertical;
 }
 
 .formButton {

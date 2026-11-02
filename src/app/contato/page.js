@@ -206,7 +206,6 @@ export default function Contato() {
               id="mensagem"
               rows={5}
               placeholder="Como podemos te ajudar?"
-              className={styles.inputMsg}
               aria-invalid={Boolean(errors.mensagem)}
               aria-describedby={errors.mensagem ? "erro-mensagem" : undefined}
               {...register("mensagem", {

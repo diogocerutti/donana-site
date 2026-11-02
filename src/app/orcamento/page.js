@@ -1,26 +1,236 @@
+"use client";
+
 import styles from "./orcamento.module.css";
+
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { GlobalTitle, GlobalSubtitle } from "@/components/text/text";
 
 export default function Orcamento() {
+  const [mensagemSucesso, setMensagemSucesso] = useState("");
+
+  const {
+    register,
+    handleSubmit,
+    setError,
+    clearErrors,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    mode: "onBlur", // valida quando sai de um campo
+    defaultValues: {
+      nome: "",
+      email: "",
+      telefone: "",
+      assunto: "",
+      mensagem: "",
+    },
+  });
+
+  async function onSubmit(dados) {
+    clearErrors("root");
+    setMensagemSucesso("");
+
+    try {
+      reset();
+      setMensagemSucesso("✅ Orçamento enviado com sucesso!");
+    } catch {
+      setError("erro!");
+    }
+  }
+
   return (
     <div className={styles.orcamento}>
-      <GlobalTitle title={"Orçamento"} />
-      <GlobalSubtitle
-        subtitle={
-          "Preencha os dados abaixo e entraremos em contato o mais breve possível com os detalhes para o seu evento."
-        }
-      />
-      <form className={styles.orcForm}>
-        <label htmlFor="nome">Nome Completo*</label>
-        <input
-          maxLength={120}
-          id="nome"
-          type="text"
-          autoComplete="name"
-          placeholder="Digite o seu nome"
-          className={styles.inputField}
-          required
-        />
+      <GlobalTitle title="Orçamento" />
+      <GlobalSubtitle subtitle="Preencha os dados abaixo e entraremos em contato o mais breve possível com os detalhes para o seu evento." />
+      <form
+        className={styles.form}
+        onSubmit={handleSubmit(onSubmit)}
+        noValidate
+      >
+        <div className={styles.wrap}>
+          <div className={styles.formField}>
+            <label htmlFor="nome">Nome Completo*</label>
+            <input
+              readOnly={isSubmitting}
+              maxLength={120}
+              id="nome"
+              type="text"
+              autoComplete="name"
+              placeholder="Digite o seu nome"
+              aria-invalid={Boolean(errors.nome)}
+              aria-describedby={errors.nome ? "erro-nome" : undefined}
+              {...register("nome", {
+                required: "Informe seu nome.",
+                maxLength: {
+                  value: 120,
+                  message: "O nome deve ter no máximo 120 caracteres.",
+                },
+                validate: (valor) =>
+                  valor.trim().length >= 5 ||
+                  "O nome deve ter pelo menos 5 caracteres.",
+              })}
+              required
+            />
+            {errors.nome && (
+              <p id="erro-nome" role="alert" className={styles.inputError}>
+                {errors.nome.message}
+              </p>
+            )}
+          </div>
+          <div className={styles.formField}>
+            <label htmlFor="email">E-mail*</label>
+            <input
+              readOnly={isSubmitting}
+              maxLength={254}
+              required
+              id="email"
+              type="email"
+              autoComplete="email"
+              placeholder="seu@email.com"
+              aria-invalid={Boolean(errors.email)}
+              aria-describedby={errors.email ? "erro-email" : undefined}
+              {...register("email", {
+                required: "Informe seu e-mail.",
+                maxLength: {
+                  value: 254,
+                  message: "O e-mail deve ter no máximo 254 caracteres.",
+                },
+                setValueAs: (valor) => valor.trim(),
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Campo Inválido",
+                },
+              })}
+            />
+            {errors.email && (
+              <p id="erro-email" role="alert" className={styles.inputError}>
+                {errors.email.message}
+              </p>
+            )}
+          </div>
+        </div>
+        <div className={styles.wrap}>
+          <div className={styles.formField}>
+            <label htmlFor="telefone">Telefone*</label>
+            <input
+              required
+              maxLength={25}
+              readOnly={isSubmitting}
+              id="telefone"
+              type="tel"
+              autoComplete="tel-national"
+              placeholder="(00)00000-0000"
+              aria-invalid={Boolean(errors.telefone)}
+              aria-describedby={errors.telefone ? "erro-telefone" : undefined}
+              {...register("telefone", {
+                maxLength: {
+                  value: 25,
+                  message: "O telefone deve ter no máximo 25 caracteres.",
+                },
+                validate: (valor) => {
+                  if (!/^[\d\s().-]+$/.test(valor)) {
+                    return "Informe um telefone válido com DDD.";
+                  }
+
+                  const numeros = valor.replace(/\D/g, "");
+
+                  return (
+                    /^[1-9]{2}(?:[2-5]\d{7}|9\d{8})$/.test(numeros) ||
+                    "Informe um telefone válido com DDD."
+                  );
+                },
+              })}
+            />
+            {errors.telefone && (
+              <p id="erro-telefone" role="alert" className={styles.inputError}>
+                {errors.telefone.message}
+              </p>
+            )}
+          </div>
+          <div className={styles.formField}>
+            <label htmlFor="assunto">Assunto*</label>
+            <input
+              required
+              maxLength={100}
+              readOnly={isSubmitting}
+              id="assunto"
+              type="text"
+              placeholder="Insira o assunto"
+              aria-invalid={Boolean(errors.assunto)}
+              aria-describedby={errors.assunto ? "erro-assunto" : undefined}
+              {...register("assunto", {
+                maxLength: {
+                  value: 100,
+                  message: "O Assunto deve ter no máximo 100 caracteres.",
+                },
+                validate: (valor) =>
+                  valor.trim().length >= 20 ||
+                  "O Assunto deve ter pelo menos 20 caracteres.",
+              })}
+            />
+            {errors.assunto && (
+              <p id="erro-assunto" role="alert" className={styles.inputError}>
+                {errors.assunto.message}
+              </p>
+            )}
+          </div>
+        </div>
+        <div className={styles.formField}>
+          <label htmlFor="mensagem">Mensagem / Detalhes*</label>
+          <textarea
+            readOnly={isSubmitting}
+            maxLength={2500}
+            required
+            id="mensagem"
+            rows={8}
+            placeholder="Descreva o seu evento/orçamento"
+            aria-invalid={Boolean(errors.mensagem)}
+            aria-describedby={errors.mensagem ? "erro-mensagem" : undefined}
+            {...register("mensagem", {
+              required: "Informe sua mensagem.",
+              maxLength: {
+                value: 2000,
+                message: "A mensagem deve ter no máximo 2500 caracteres.",
+              },
+              validate: (valor) =>
+                valor.trim().length >= 100 ||
+                "A mensagem deve ter no mínimo 100 caracteres.",
+            })}
+          />
+          {errors.mensagem && (
+            <p id="erro-mensagem" role="alert" className={styles.inputError}>
+              {errors.mensagem.message}
+            </p>
+          )}
+        </div>
+        {errors.root?.servidor && (
+          <p role="alert" className={styles.inputError}>
+            {errors.root.servidor.message}
+          </p>
+        )}
+
+        {mensagemSucesso && (
+          <div className={styles.success}>
+            <p role="status">{mensagemSucesso}</p>
+
+            <button
+              type="button"
+              className={styles.closeSuccess}
+              onClick={() => setMensagemSucesso("")}
+              aria-label="Fechar"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+        )}
+        <button
+          type="submit"
+          className={styles.formButton}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Enviando..." : "Solicitar Orçamento"}
+        </button>
       </form>
     </div>
   );
