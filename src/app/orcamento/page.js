@@ -32,10 +32,52 @@ export default function Orcamento() {
     setMensagemSucesso("");
 
     try {
+      const resposta = await fetch("/api/orcamento", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dados),
+        signal: AbortSignal.timeout(45000),
+      });
+
+      const resultado = await resposta.json();
+
+      if (!resposta.ok) {
+        const campos = ["nome", "email", "telefone", "assunto", "mensagem"];
+
+        if (campos.includes(resultado.campo)) {
+          setError(
+            resultado.campo,
+            {
+              type: "server",
+              message: resultado.mensagem,
+            },
+            { shouldFocus: true },
+          );
+        } else {
+          setError("root.servidor", {
+            type: "server",
+            message:
+              resultado.mensagem || "Não foi possível confirmar o envio.",
+          });
+        }
+
+        return;
+      }
+
+      if (resultado.enviado !== true) {
+        throw new Error("Resposta inesperada.");
+      }
+
       reset();
-      setMensagemSucesso("✅ Orçamento enviado com sucesso!");
+      setMensagemSucesso("✅ Solicitação de orçamento enviada com sucesso!");
     } catch {
-      setError("erro!");
+      setError("root.servidor", {
+        type: "server",
+        message:
+          "Não foi possível confirmar o envio. Aguarde antes de tentar novamente.",
+      });
     }
   }
 
@@ -124,19 +166,23 @@ export default function Orcamento() {
               aria-invalid={Boolean(errors.telefone)}
               aria-describedby={errors.telefone ? "erro-telefone" : undefined}
               {...register("telefone", {
+                required: "Informe seu telefone.",
                 maxLength: {
                   value: 25,
                   message: "O telefone deve ter no máximo 25 caracteres.",
                 },
                 validate: (valor) => {
-                  if (!/^[\d\s().-]+$/.test(valor)) {
-                    return "Informe um telefone válido com DDD.";
+                  const telefone = valor.trim();
+
+                  if (!telefone) {
+                    return "Informe seu telefone.";
                   }
 
-                  const numeros = valor.replace(/\D/g, "");
+                  const numeros = telefone.replace(/\D/g, "");
 
                   return (
-                    /^[1-9]{2}(?:[2-5]\d{7}|9\d{8})$/.test(numeros) ||
+                    (/^[\d\s().-]+$/.test(telefone) &&
+                      /^[1-9]{2}(?:[2-5]\d{7}|9\d{8})$/.test(numeros)) ||
                     "Informe um telefone válido com DDD."
                   );
                 },
@@ -160,13 +206,14 @@ export default function Orcamento() {
               aria-invalid={Boolean(errors.assunto)}
               aria-describedby={errors.assunto ? "erro-assunto" : undefined}
               {...register("assunto", {
+                required: "Informe o assunto.",
                 maxLength: {
                   value: 100,
-                  message: "O Assunto deve ter no máximo 100 caracteres.",
+                  message: "O assunto deve ter no máximo 100 caracteres.",
                 },
                 validate: (valor) =>
-                  valor.trim().length >= 20 ||
-                  "O Assunto deve ter pelo menos 20 caracteres.",
+                  valor.trim().length >= 5 ||
+                  "O assunto deve ter pelo menos 5 caracteres.",
               })}
             />
             {errors.assunto && (
@@ -190,12 +237,12 @@ export default function Orcamento() {
             {...register("mensagem", {
               required: "Informe sua mensagem.",
               maxLength: {
-                value: 2000,
+                value: 2500,
                 message: "A mensagem deve ter no máximo 2500 caracteres.",
               },
               validate: (valor) =>
-                valor.trim().length >= 100 ||
-                "A mensagem deve ter no mínimo 100 caracteres.",
+                valor.trim().length >= 30 ||
+                "A mensagem deve ter no mínimo 30 caracteres.",
             })}
           />
           {errors.mensagem && (
