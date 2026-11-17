@@ -2,10 +2,15 @@
 
 import styles from "./sobre-nos.module.css";
 
-import evento from "../../../public/img/evento.png";
-import evento2 from "../../../public/img/evento2.png";
-import mesas from "../../../public/img/mesas.png";
 import ambiente from "../../../public/img/ambiente.png";
+import donana from "../../../public/img/fachada-nova.jpeg";
+import sepiso from "../../../public/img/2piso.jpeg";
+import balcao from "../../../public/img/balcao.jpeg";
+import interno from "../../../public/img/interno.jpeg";
+import interno2 from "../../../public/img/interno2.jpeg";
+import interno3 from "../../../public/img/interno3.jpeg";
+import interno4 from "../../../public/img/interno4.jpeg";
+import interno5 from "../../../public/img/interno5.jpeg";
 
 import { playfair } from "../../fonts/fonts";
 import { GlobalTitle, GlobalSubtitle } from "@/components/text/text";
@@ -16,11 +21,16 @@ import { useState } from "react";
 
 const images = [
   {
-    src: evento.src,
+    src: donana.src,
   },
-  { src: evento2.src },
-  { src: mesas.src },
+  { src: sepiso.src },
+  { src: balcao.src },
   { src: ambiente.src },
+  { src: interno.src },
+  { src: interno2.src },
+  { src: interno3.src },
+  { src: interno4.src },
+  { src: interno5.src },
 ];
 
 export default function SobreNos() {

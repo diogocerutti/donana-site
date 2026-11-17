@@ -1,7 +1,7 @@
 .carousel {
   position: relative;
   width: 100%;
-  height: clamp(240px, 50vw, 500px);
+  height: clamp(380px, 50vw, 550px);
   overflow: hidden;
   margin-bottom: 20px;
 }
