@@ -2,7 +2,6 @@
 
 import styles from "./sobre-nos.module.css";
 
-import ambiente from "../../../public/img/ambiente.png";
 import donana from "../../../public/img/fachada-nova.jpeg";
 import sepiso from "../../../public/img/2piso.jpeg";
 import balcao from "../../../public/img/balcao.jpeg";
@@ -25,7 +24,6 @@ const images = [
   },
   { src: sepiso.src },
   { src: balcao.src },
-  { src: ambiente.src },
   { src: interno.src },
   { src: interno2.src },
   { src: interno3.src },

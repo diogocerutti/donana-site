@@ -4,22 +4,20 @@ import { useEffect, useState } from "react";
 import { GlobalArrowLeft, GlobalArrowRight } from "@/components/svg/svg";
 import { playfair } from "@/fonts/fonts";
 
-import carousel1 from "../../../../public/img/inside.png";
-import carousel2 from "../../../../public/img/balcony.png";
-import carousel3 from "../../../../public/img/buffet.png";
-import carousel4 from "../../../../public/img/buffet2.png";
+// import carousel1 from "../../../../public/img/inside.png";
+// import carousel2 from "../../../../public/img/balcony.png";
+// import carousel3 from "../../../../public/img/buffet.png";
+// import carousel4 from "../../../../public/img/buffet2.png";
+import buffetret from "../../../../public/img/buffet-ret.png";
 import carousel5 from "../../../../public/img/products.png";
 import carousel6 from "../../../../public/img/products2.png";
 
 import styles from "./carousel.module.css";
 
 const images = [
-  { src: carousel1.src },
-  { src: carousel2.src },
-  { src: carousel3.src },
-  { src: carousel4.src },
   { src: carousel5.src },
   { src: carousel6.src },
+  { src: buffetret.src },
 ];
 
 export default function Carousel() {
