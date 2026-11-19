@@ -16,13 +16,13 @@ export default function Navigator({ fontSize = "", onNavigate }) {
       <Link href="/contato" onClick={onNavigate} style={{ fontSize: fontSize }}>
         CONTATO
       </Link>
-      <Link
+      {/* <Link
         href="/orcamento"
         onClick={onNavigate}
         style={{ fontSize: fontSize }}
       >
         ORÇAMENTO
-      </Link>
+      </Link> */}
     </>
   );
 }
