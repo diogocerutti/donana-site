@@ -6,6 +6,7 @@ import logo from "@/public/img/logo.png";
 import Navigator from "@/app/(publico)/_components/navigator/navigator";
 import { FaWhatsapp, FaFacebookF, FaInstagram } from "react-icons/fa";
 import { WhatsAppLink } from "@/components/whatsapp/whatsapp";
+import Link from "next/link";
 
 import { playfair } from "@/fonts/fonts";
 
@@ -41,6 +42,7 @@ export default function Footer() {
       <div className={styles.footerItem}>
         <p className={`${styles.title} ${playfair.className}`}>Opções</p>
         <Navigator fontSize="14px" />
+        <Link href="/admin">Área Restrita</Link>
       </div>
       <div className={styles.footerItem}>
         <p className={`${styles.title} ${playfair.className}`}>Contato</p>
