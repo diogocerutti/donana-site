@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { GlobalArrowLeft, GlobalArrowRight } from "@/components/svg/svg";
 import { playfair } from "@/fonts/fonts";
 
-import entrada from "../../../../public/img/entrada.jpeg";
-import entradacx from "../../../../public/img/entradacx.jpeg";
-import palhas from "../../../../public/img/palhas.jpeg";
-import balcoespas from "../../../../public/img/balcoespas.jpeg";
-import products from "../../../../public/img/products.png";
+import entrada from "@/public/img/entrada.jpeg";
+import entradacx from "@/public/img/entradacx.jpeg";
+import palhas from "@/public/img/palhas.jpeg";
+import balcoespas from "@/public/img/balcoespas.jpeg";
+import products from "@/public/img/products.png";
 
 import styles from "./carousel.module.css";
 

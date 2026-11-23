@@ -2,17 +2,17 @@
 
 import styles from "./sobre-nos.module.css";
 
-import donana from "../../../public/img/fachada-nova.jpeg";
-import sepiso from "../../../public/img/2piso.jpeg";
-import balcao from "../../../public/img/balcao.jpeg";
-import interno from "../../../public/img/interno.jpeg";
-import interno2 from "../../../public/img/interno2.jpeg";
-import interno3 from "../../../public/img/interno3.jpeg";
-import interno4 from "../../../public/img/interno4.jpeg";
-import interno5 from "../../../public/img/interno5.jpeg";
-import entrada from "../../../public/img/entrada.jpeg";
+import donana from "@/public/img/fachada-nova.jpeg";
+import sepiso from "@/public/img/2piso.jpeg";
+import balcao from "@/public/img/balcao.jpeg";
+import interno from "@/public/img/interno.jpeg";
+import interno2 from "@/public/img/interno2.jpeg";
+import interno3 from "@/public/img/interno3.jpeg";
+import interno4 from "@/public/img/interno4.jpeg";
+import interno5 from "@/public/img/interno5.jpeg";
+import entrada from "@/public/img/entrada.jpeg";
 
-import { playfair } from "../../fonts/fonts";
+import { playfair } from "@/fonts/fonts";
 import { GlobalTitle, GlobalSubtitle } from "@/components/text/text";
 import { GlobalArrowLeft, GlobalArrowRight } from "@/components/svg/svg";
 import { RiZoomInFill } from "react-icons/ri";

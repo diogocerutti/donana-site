@@ -1,12 +1,12 @@
 import styles from "./menu.module.css";
-import salgados from "../../../../public/img/salgados.jpeg";
-import torta from "../../../../public/img/torta.png";
-import pizzas from "../../../../public/img/pizzas.jpeg";
-import docinhos from "../../../../public/img/docinhos.jpeg";
-import buffetret from "../../../../public/img/buffet-ret.png";
+import salgados from "@/public/img/salgados.jpeg";
+import torta from "@/public/img/torta.png";
+import pizzas from "@/public/img/pizzas.jpeg";
+import docinhos from "@/public/img/docinhos.jpeg";
+import buffetret from "@/public/img/buffet-ret.png";
 import { GlobalTitle, GlobalSubtitle } from "@/components/text/text";
 
-import { playfair } from "../../../fonts/fonts";
+import { playfair } from "@/fonts/fonts";
 
 const images = [
   {

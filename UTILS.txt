@@ -1,0 +1,1 @@
+_components -> indica para o Next.js que a pasta e suas subpastas ficam fora do roteamento.

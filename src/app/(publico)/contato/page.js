@@ -4,7 +4,7 @@ import styles from "./contato.module.css";
 
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { playfair } from "../../fonts/fonts";
+import { playfair } from "@/fonts/fonts";
 import { GlobalTitle, GlobalSubtitle } from "@/components/text/text";
 import { Info } from "./components/info";
 
