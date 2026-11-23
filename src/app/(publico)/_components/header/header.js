@@ -2,7 +2,7 @@
 
 import styles from "./header.module.css";
 import logo from "@/public/img/logo.png";
-import Navigator from "@/components/navigator/navigator";
+import Navigator from "@/app/(publico)/_components/navigator/navigator";
 import { useState } from "react";
 import Link from "next/link";
 

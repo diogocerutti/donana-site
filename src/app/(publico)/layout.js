@@ -1,6 +1,9 @@
 import Header from "./_components/header/header.js";
 import Footer from "./_components/footer/footer.js";
+import { FaWhatsapp } from "react-icons/fa";
+import { WhatsAppLink } from "@/components/whatsapp/whatsapp.js";
 import { urbanist } from "@/fonts/fonts";
+import styles from "./layout.module.css";
 
 export const metadata = {
   title: "Create Next App",
@@ -14,6 +17,12 @@ export default function RootLayout({ children }) {
         <Header />
         {children}
         <Footer />
+        <WhatsAppLink
+          className={styles.whatsButton}
+          aria-label="Fale conosco pelo WhatsApp"
+        >
+          <FaWhatsapp />
+        </WhatsAppLink>
       </body>
     </html>
   );

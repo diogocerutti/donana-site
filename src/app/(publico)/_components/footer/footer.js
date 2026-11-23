@@ -3,7 +3,7 @@
 import data from "@/data/data.json";
 import styles from "./footer.module.css";
 import logo from "@/public/img/logo.png";
-import Navigator from "@/components/navigator/navigator";
+import Navigator from "@/app/(publico)/_components/navigator/navigator";
 import { FaWhatsapp, FaFacebookF, FaInstagram } from "react-icons/fa";
 import { WhatsAppLink } from "@/components/whatsapp/whatsapp";
 

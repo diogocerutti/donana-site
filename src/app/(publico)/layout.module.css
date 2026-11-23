@@ -1,0 +1,22 @@
+.whatsButton {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 10000;
+
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+
+  background: #087f5b;
+  color: white;
+  font-size: 1.75rem;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 20%);
+}
+
+.whatsButton:focus-visible {
+  outline: 3px solid #087f5b;
+  outline-offset: 4px;
+}
