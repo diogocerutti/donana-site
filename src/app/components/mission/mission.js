@@ -19,21 +19,21 @@ export default function Mission() {
         <div className={styles.icon}>
           <TargetIcon />
         </div>
-        <h1 className={`${styles.title} ${playfair.className}`}>Missão</h1>
+        <h1 className={playfair.className}>Missão</h1>
         <p>{data.contact.mission}</p>
       </div>
       <div className={styles.valueItem}>
         <div className={styles.icon}>
           <EyeIcon />
         </div>
-        <h1 className={`${styles.title} ${playfair.className}`}>Visão</h1>
+        <h1 className={playfair.className}>Visão</h1>
         <p>{data.contact.vision}</p>
       </div>
       <div className={styles.valueItem}>
         <div className={styles.icon}>
           <HeartIcon />
         </div>
-        <h1 className={`${styles.title} ${playfair.className}`}>Valores</h1>
+        <h1 className={playfair.className}>Valores</h1>
         <p>{data.contact.values}</p>
       </div>
     </div>

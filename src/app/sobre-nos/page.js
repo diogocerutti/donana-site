@@ -10,6 +10,7 @@ import interno2 from "../../../public/img/interno2.jpeg";
 import interno3 from "../../../public/img/interno3.jpeg";
 import interno4 from "../../../public/img/interno4.jpeg";
 import interno5 from "../../../public/img/interno5.jpeg";
+import entrada from "../../../public/img/entrada.jpeg";
 
 import { playfair } from "../../fonts/fonts";
 import { GlobalTitle, GlobalSubtitle } from "@/components/text/text";
@@ -29,6 +30,7 @@ const images = [
   { src: interno3.src },
   { src: interno4.src },
   { src: interno5.src },
+  { src: entrada.src },
 ];
 
 export default function SobreNos() {
