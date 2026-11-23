@@ -5,6 +5,7 @@ import styles from "./footer.module.css";
 import logo from "../../../public/img/logo.png";
 import Navigator from "../navigator/navigator";
 import { FaWhatsapp, FaFacebookF, FaInstagram } from "react-icons/fa";
+import { WhatsAppLink } from "../whatsapp/whatsapp";
 
 import { playfair } from "@/fonts/fonts";
 
@@ -18,7 +19,9 @@ export default function Footer() {
           com nossos produtos.
         </p>
         <div className={styles.icons}>
-          <FaWhatsapp size={20} color="white" />
+          <WhatsAppLink>
+            <FaWhatsapp size={20} color="white" />{" "}
+          </WhatsAppLink>
           <FaFacebookF size={20} color="white" />
           <FaInstagram size={20} color="white" />
         </div>
@@ -35,11 +38,13 @@ export default function Footer() {
         </div>
         <div className={styles.contactInfo}>
           <p>📞</p>
-          <p>{data.contact.cellphone}</p>
+          <WhatsAppLink>
+            <p>{data.contact.cellphone}</p>
+          </WhatsAppLink>
         </div>
         <div className={styles.contactInfo}>
           <p>✉️</p>
-          <p>{data.contact.email}</p>
+          <a href={`mailto:${data.contact.email}`}>{data.contact.email}</a>
         </div>
       </div>
     </div>

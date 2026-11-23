@@ -7,6 +7,7 @@ import {
   MailIcon,
   PhoneIcon,
 } from "@/components/svg/svg.js";
+import { WhatsAppLink } from "@/components/whatsapp/whatsapp";
 import { MdWhatsapp } from "react-icons/md";
 import { playfair } from "@/fonts/fonts";
 
@@ -52,10 +53,17 @@ export function Info() {
         </div>
         <div className={styles.infoData}>
           <p className={styles.itemTitle}>Telefone</p>
-          <p className={styles.itemSubtitle}>{data.contact.phone}</p>
-          <p className={`${styles.itemSubtitle} ${styles.whatsapp}`}>
-            <MdWhatsapp color="#1ca017" /> {data.contact.cellphone}
-          </p>
+          <a
+            className={styles.itemSubtitle}
+            href={`tel:+55${data.contact.phone.replace(/\D/g, "")}`}
+          >
+            {data.contact.phone}
+          </a>
+          <WhatsAppLink>
+            <p className={`${styles.itemSubtitle} ${styles.whatsapp}`}>
+              <MdWhatsapp color="#1ca017" /> {data.contact.cellphone}
+            </p>
+          </WhatsAppLink>
         </div>
       </div>
     </div>

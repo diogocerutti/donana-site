@@ -39,6 +39,11 @@
   overflow-wrap: anywhere;
 }
 
+.infoData > a {
+  align-self: flex-start;
+  max-width: 100%;
+}
+
 .itemTitle {
   font-size: 18px;
   font-weight: bold;
