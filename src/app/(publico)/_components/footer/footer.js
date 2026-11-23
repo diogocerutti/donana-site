@@ -22,8 +22,20 @@ export default function Footer() {
           <WhatsAppLink>
             <FaWhatsapp size={20} color="white" />{" "}
           </WhatsAppLink>
-          <FaFacebookF size={20} color="white" />
-          <FaInstagram size={20} color="white" />
+          <a
+            href="https://www.facebook.com/apadariadonana/?locale=pt_BR"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebookF size={20} color="white" />
+          </a>
+          <a
+            href="https://www.instagram.com/padariadonana/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram size={20} color="white" />
+          </a>
         </div>
       </div>
       <div className={styles.footerItem}>
