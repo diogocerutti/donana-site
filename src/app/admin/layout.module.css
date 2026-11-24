@@ -1,0 +1,59 @@
+.adminLayout {
+  --header-height: 64px;
+  --sidebar-width: 250px;
+
+  display: grid;
+
+  grid-template-columns: minmax(0, 1fr);
+
+  grid-template-rows:
+    var(--header-height)
+    minmax(0, 1fr);
+
+  grid-template-areas:
+    "header"
+    "content";
+
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.content {
+  grid-area: content;
+  min-width: 0;
+  min-height: 0;
+  padding: 16px;
+  overflow: auto;
+  background-color: #f1f5f9;
+}
+
+.overlay {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .layout {
+    grid-template-columns:
+      var(--sidebar-width)
+      minmax(0, 1fr);
+
+    grid-template-areas:
+      "header header"
+      "sidebar content";
+  }
+
+  .content {
+    padding: 24px;
+  }
+
+  .overlay {
+    display: none;
+  }
+}

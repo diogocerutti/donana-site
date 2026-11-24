@@ -6,18 +6,15 @@ import AdminNavigator from "../navigator/adminNavigator";
 import { useState } from "react";
 import Link from "next/link";
 
-export default function AdminHeader() {
-  const [showMobileHeader, setShowMobileHeader] = useState("none");
-  const isOpen = showMobileHeader !== "none";
-
-  const handleMobileHeader = () => {
-    setShowMobileHeader((actual) => (actual === "none" ? "flex" : "none"));
-  };
-
+export default function AdminHeader({ sidebarOpen, onToggleSidebar }) {
   return (
-    <>
-      <div className={styles.header}>
-        <Link href="/admin" onClick={() => setShowMobileHeader("none")}>
+    <header className={styles.header}>
+      <div className={styles.left}>
+        <Link
+          href="/admin"
+          onClick={() => setShowMobileHeader("none")}
+          className={styles.logoLink}
+        >
           <img
             src={logo.src}
             className={styles.logo}
@@ -27,10 +24,11 @@ export default function AdminHeader() {
         </Link>
         <button
           type="button"
-          onClick={handleMobileHeader}
-          className={`${styles.menuButton} ${isOpen ? styles.open : ""}`}
-          aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
-          aria-expanded={isOpen}
+          className={styles.menuButton}
+          onClick={onToggleSidebar}
+          aria-label={sidebarOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={sidebarOpen}
+          aria-controls="admin-sidebar"
         >
           <svg
             className={styles.menuDrawing}
@@ -51,10 +49,11 @@ export default function AdminHeader() {
         <div className={styles.navbar}>
           <AdminNavigator />
         </div>
+
+        <div className={`${styles.mobileHeader} ${isOpen ? styles.open : ""}`}>
+          <AdminNavigator onNavigate={() => setShowMobileHeader("none")} />
+        </div>
       </div>
-      <div className={`${styles.mobileHeader} ${isOpen ? styles.open : ""}`}>
-        <AdminNavigator onNavigate={() => setShowMobileHeader("none")} />
-      </div>
-    </>
+    </header>
   );
 }

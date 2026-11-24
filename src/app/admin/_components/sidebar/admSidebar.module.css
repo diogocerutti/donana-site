@@ -1,0 +1,12 @@
+.adminSidebar {
+  color: rgb(69, 112, 161);
+  position: fixed;
+  border: solid;
+  width: fit-content;
+  height: 100%;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+}
